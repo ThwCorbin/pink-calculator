@@ -1,8 +1,8 @@
 import React from "react";
 
-function Key(props) {
-	return <button></button>;
-}
+// function Key(props) {
+// 	return <button></button>;
+// }
 
 class Calculator extends React.Component {
 	constructor(props) {
@@ -12,18 +12,16 @@ class Calculator extends React.Component {
 		};
 	}
 
-	const numbers = [[7,8,9],[4,5,6], [1,2,3], [0]];
-	const operators = ['+', '-', '*', '/', '='];
-	const moreOperators = ['C', '+/-', "%"];
+	// const calcKeys = [
+	// 	["C", "+/-", "%", "/"],
+	// 	["7", "8", "9", "X"],
+	// 	["4", "5", "6", "-"],
+	// 	["1", "2", "3", "+"],
+	// 	["0", ".", "="],
+	// ];
 
-	// keys = 
-
-	render(){
-		return (
-			<div>
-				{keys}
-			</div>
-		);
+	render() {
+		return <div>"hi"</div>;
 	} //render
 } //Calculator
 
