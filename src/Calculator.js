@@ -2,7 +2,10 @@ import React from "react";
 
 function CalcKey(props) {
 	return (
-		<button className={"calcKey calcKey_" + props.calcKey}>
+		<button
+			className={"calcKey calcKey_" + props.calcKey}
+			onClick={() => props.onClick()}
+		>
 			{props.calcKey}
 		</button>
 	);
@@ -14,6 +17,11 @@ class Calculator extends React.Component {
 		this.state = {
 			value: 0,
 		};
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(e) {
+		console.log(e);
 	}
 
 	render() {
@@ -27,10 +35,10 @@ class Calculator extends React.Component {
 
 		const calcKeyboard = calcKeys.map((row, idx) => (
 			<div className={"calcRow calcRow_" + idx}>
-				<CalcKey calcKey={row[0]} />
-				<CalcKey calcKey={row[1]} />
-				<CalcKey calcKey={row[2]} />
-				<CalcKey calcKey={row[3]} />
+				<CalcKey calcKey={row[0]} onClick={this.handleClick()} />
+				<CalcKey calcKey={row[1]} onClick={this.handleClick()} />
+				<CalcKey calcKey={row[2]} onClick={this.handleClick()} />
+				<CalcKey calcKey={row[3]} onClick={this.handleClick()} />
 			</div>
 		));
 
