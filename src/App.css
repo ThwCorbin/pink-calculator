@@ -1,14 +1,57 @@
+* {
+	box-sizing: border-box;
+}
+
 .App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 }
 
 .App-header {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 
 h1 {
 	color: #f506cd;
+}
+
+.calculator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 420px;
+	height: 630px;
+	background-color: #f506cd;
+	border-radius: 2%;
+}
+
+.calcDisplay {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	color: #f506cd;
+	font-size: 35px;
+	font-weight: bold;
+	width: 400px;
+	height: 100px;
+	padding: 5px;
+	background-color: #d8eaf1;
+}
+
+.calcRow {
+	width: 400px;
+	height: 100px;
+}
+
+.calcKey {
+	width: 100px;
+	height: 100px;
+	color: #f506cd;
+	font-size: 25px;
 }
