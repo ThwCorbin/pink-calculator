@@ -4,7 +4,7 @@ function CalcKey(props) {
 	return (
 		<button
 			className={"calcKey calcKey_" + props.calcKey}
-			onClick={() => props.onClick()}
+			onClick={props.onClick}
 		>
 			{props.calcKey}
 		</button>
@@ -21,13 +21,13 @@ class Calculator extends React.Component {
 	}
 
 	handleClick(e) {
-		console.log(e);
+		console.log(e.target.textContent);
 	}
 
 	render() {
 		const calcKeys = [
 			["C", "+/-", "%", "/"],
-			["7", "8", "9", "X"],
+			["7", "8", "9", "*"],
 			["4", "5", "6", "-"],
 			["1", "2", "3", "+"],
 			["color", "0", ".", "="],
@@ -35,10 +35,10 @@ class Calculator extends React.Component {
 
 		const calcKeyboard = calcKeys.map((row, idx) => (
 			<div className={"calcRow calcRow_" + idx}>
-				<CalcKey calcKey={row[0]} onClick={this.handleClick()} />
-				<CalcKey calcKey={row[1]} onClick={this.handleClick()} />
-				<CalcKey calcKey={row[2]} onClick={this.handleClick()} />
-				<CalcKey calcKey={row[3]} onClick={this.handleClick()} />
+				<CalcKey calcKey={row[0]} onClick={(e) => this.handleClick(e)} />
+				<CalcKey calcKey={row[1]} onClick={(e) => this.handleClick(e)} />
+				<CalcKey calcKey={row[2]} onClick={(e) => this.handleClick(e)} />
+				<CalcKey calcKey={row[3]} onClick={(e) => this.handleClick(e)} />
 			</div>
 		));
 
