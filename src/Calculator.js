@@ -15,13 +15,39 @@ class Calculator extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: 0,
+			displayNum: "0",
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+	updateNumber(numString) {
+		const { displayNum } = this.state;
+		if (displayNum === "0") {
+			this.setState({
+				displayNum: numString,
+			});
+		} else {
+			this.setState({
+				displayNum: displayNum + numString,
+			});
+		}
+	}
+
+	updateOperator(operString) {
+		//this should be string
+		console.log(operString);
+	}
+
+	checkString(string) {
+		string === "0"
+			? this.updateNumber(string)
+			: Number(string)
+			? this.updateNumber(string)
+			: this.updateOperator(string);
+	}
+
 	handleClick(e) {
-		console.log(e.target.textContent);
+		this.checkString(e.target.textContent);
 	}
 
 	render() {
@@ -44,7 +70,7 @@ class Calculator extends React.Component {
 
 		return (
 			<div className={"calculator"}>
-				<div className={"calcDisplay"}>{this.state.value}</div>
+				<div className={"calcDisplay"}>{this.state.displayNum}</div>
 				{calcKeyboard}
 			</div>
 		); //return
