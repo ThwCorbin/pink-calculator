@@ -60,7 +60,7 @@ class Calculator extends React.Component {
 		];
 
 		const calcKeyboard = calcKeys.map((row, idx) => (
-			<div className={"calcRow calcRow_" + idx}>
+			<div className={"calcRow calcRow_" + idx} key={"calcRow" + idx}>
 				<CalcKey calcKey={row[0]} onClick={(e) => this.handleClick(e)} />
 				<CalcKey calcKey={row[1]} onClick={(e) => this.handleClick(e)} />
 				<CalcKey calcKey={row[2]} onClick={(e) => this.handleClick(e)} />
