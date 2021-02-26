@@ -1,12 +1,9 @@
 import React from "react";
 
-function CalcKey(props) {
+function CalcKey({ calcKey, onClick }) {
 	return (
-		<button
-			className={"calcKey calcKey_" + props.calcKey}
-			onClick={props.onClick}
-		>
-			{props.calcKey}
+		<button className={"calcKey calcKey_" + calcKey} onClick={onClick}>
+			{calcKey}
 		</button>
 	);
 }
