@@ -14,10 +14,13 @@ const CalcKey = ({ calcKey, onClick }) => {
 
 const Calculator = () => {
 	const [displayNum, setDisplayNum] = useState("0");
+	const [memoryNum, setMemoryNum] = useState(null);
+	const [operator, setOperator] = useState(null);
 
-	const doOperation = (operString) => {
-		//this should be string
-		console.log(operString);
+	const doOperation = (operatorStr) => {
+		setMemoryNum(displayNum);
+		setOperator(operatorStr);
+		setDisplayNum(displayNum + ` ${operatorStr} `);
 	};
 
 	const checkString = (string) => {
