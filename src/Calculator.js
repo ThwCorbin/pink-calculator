@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function CalcKey({ calcKey, onClick }) {
+const CalcKey = ({ calcKey, onClick }) => {
 	return (
 		<button className={"calcKey calcKey_" + calcKey} onClick={onClick}>
 			{calcKey}
 		</button>
 	);
-}
+};
 
-function Calculator() {
+const Calculator = () => {
 	const [displayNum, setDisplayNum] = useState("0");
 
 	const updateNumber = (numString) => {
@@ -32,9 +32,7 @@ function Calculator() {
 			: updateOperator(string);
 	};
 
-	const handleClick = (e) => {
-		checkString(e.target.textContent);
-	};
+	const handleClick = (e) => checkString(e.target.textContent);
 
 	const calcKeys = [
 		["C", "+/-", "%", "/"],
@@ -59,6 +57,6 @@ function Calculator() {
 			{calcKeyboard}
 		</div>
 	); //return
-} //Calculator
+}; //Calculator
 
 export default Calculator;
