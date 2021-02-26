@@ -16,11 +16,26 @@ const Calculator = () => {
 	const [displayNum, setDisplayNum] = useState("0");
 	const [memoryNum, setMemoryNum] = useState(null);
 	const [operator, setOperator] = useState(null);
+	const [sign, setSign] = useState("+");
 
-	const doOperation = (operatorStr) => {
-		setMemoryNum(displayNum);
-		setOperator(operatorStr);
-		setDisplayNum(displayNum + ` ${operatorStr} `);
+	const storeData = (operatorStr) => {
+		if (operatorStr === "C") {
+			setDisplayNum("0");
+			setMemoryNum(null);
+			setOperator(null);
+		} else if (operatorStr === "+/-") {
+			if (displayNum === 0) return;
+			setDisplayNum(sign === "+" ? "-" : "+");
+		} else if (operatorStr === "%") {
+		} else if (operatorStr === "color") {
+		} else if (operatorStr === ".") {
+		} else if (operatorStr === "=") {
+		} else if (operator === null) {
+			// operatorStr will be one of: "/", "*", "-", "+"
+			setMemoryNum(displayNum);
+			setOperator(operatorStr);
+			setDisplayNum(displayNum + ` ${operatorStr} `);
+		}
 	};
 
 	const checkString = (string) => {
@@ -28,7 +43,7 @@ const Calculator = () => {
 			? setDisplayNum(string)
 			: Number(string) || string === "0"
 			? setDisplayNum(displayNum + string)
-			: doOperation(string);
+			: storeData(string);
 	};
 
 	const handleClick = (e) => checkString(e.target.textContent);
