@@ -2,7 +2,11 @@ import React, { useState } from "react";
 
 const CalcKey = ({ calcKey, onClick }) => {
 	return (
-		<button className={"calcKey calcKey_" + calcKey} onClick={onClick}>
+		<button
+			type="button"
+			className={"calcKey calcKey_" + calcKey}
+			onClick={onClick}
+		>
 			{calcKey}
 		</button>
 	);
@@ -11,25 +15,17 @@ const CalcKey = ({ calcKey, onClick }) => {
 const Calculator = () => {
 	const [displayNum, setDisplayNum] = useState("0");
 
-	const updateNumber = (numString) => {
-		if (displayNum === "0") {
-			setDisplayNum(numString);
-		} else {
-			setDisplayNum(displayNum + numString);
-		}
-	};
-
-	const updateOperator = (operString) => {
+	const doOperation = (operString) => {
 		//this should be string
 		console.log(operString);
 	};
 
 	const checkString = (string) => {
-		string === "0"
-			? updateNumber(string)
-			: Number(string)
-			? updateNumber(string)
-			: updateOperator(string);
+		displayNum === "0"
+			? setDisplayNum(string)
+			: Number(string) || string === "0"
+			? setDisplayNum(displayNum + string)
+			: doOperation(string);
 	};
 
 	const handleClick = (e) => checkString(e.target.textContent);
