@@ -13,19 +13,23 @@ const CalcKey = ({ calcKey, onClick }) => {
 };
 
 const Calculator = () => {
+	// const [active, setActive] = useState(false);
 	const [displayNum, setDisplayNum] = useState("0");
 	const [memoryNum, setMemoryNum] = useState(null);
 	const [operator, setOperator] = useState(null);
-	const [sign, setSign] = useState("+");
+	const [signPositive, setSignPositive] = useState(true);
 
 	const storeData = (operatorStr) => {
 		if (operatorStr === "C") {
+			//Note: need logic for "AC" after "C"
 			setDisplayNum("0");
 			setMemoryNum(null);
 			setOperator(null);
+			setSignPositive(true);
 		} else if (operatorStr === "+/-") {
 			if (displayNum === 0) return;
-			setDisplayNum(sign === "+" ? "-" : "+");
+			setSignPositive(signPositive ? false : true);
+			setDisplayNum(signPositive ? "-" + displayNum : displayNum.slice(1));
 		} else if (operatorStr === "%") {
 		} else if (operatorStr === "color") {
 		} else if (operatorStr === ".") {
@@ -40,7 +44,8 @@ const Calculator = () => {
 
 	const checkString = (string) => {
 		displayNum === "0"
-			? setDisplayNum(string)
+			? //Note: need logic for 0/1, 0 * 1, etc.
+			  setDisplayNum(string)
 			: Number(string) || string === "0"
 			? setDisplayNum(displayNum + string)
 			: storeData(string);
