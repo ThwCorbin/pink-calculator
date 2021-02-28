@@ -18,6 +18,8 @@ const Calculator = () => {
 	const [memoryNum, setMemoryNum] = useState(null);
 	const [operator, setOperator] = useState(null);
 	const [signPositive, setSignPositive] = useState(true);
+	const [percentPressed, setPercentPressed] = useState(false);
+	// const [decimalPressed, setDecimalPressed] = useState(false);
 
 	const storeData = (operatorStr) => {
 		if (operatorStr === "C") {
@@ -26,14 +28,29 @@ const Calculator = () => {
 			setMemoryNum(null);
 			setOperator(null);
 			setSignPositive(true);
+			setPercentPressed(false);
+			// setDecimalPressed(false);
 		} else if (operatorStr === "+/-") {
 			if (displayNum === 0) return;
 			setSignPositive(signPositive ? false : true);
 			setDisplayNum(signPositive ? "-" + displayNum : displayNum.slice(1));
 		} else if (operatorStr === "%") {
+			if (percentPressed) return;
+			//Note: need logic for % when /, *, +, - in display
+			let numStr = (Number(displayNum) / 100).toString();
+			setPercentPressed(true);
+			setDisplayNum(numStr);
 		} else if (operatorStr === "color") {
 		} else if (operatorStr === ".") {
+			if (displayNum.includes(".")) return;
+			setDisplayNum(displayNum + ".");
 		} else if (operatorStr === "=") {
+			// Reset after computation
+			setMemoryNum(null);
+			setOperator(null);
+			setSignPositive(true);
+			setPercentPressed(false);
+			// setDecimalPressed(false);
 		} else if (operator === null) {
 			// operatorStr will be one of: "/", "*", "-", "+"
 			setMemoryNum(displayNum);
