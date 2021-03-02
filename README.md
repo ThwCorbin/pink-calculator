@@ -8,7 +8,7 @@ Repo: https://github.com/ThwCorbin/pink-calculator
 
 ## Description
 
-Pink Calculator is a calculator I built with React. The user can calculate. The user can change the calculator's color. Amazing!
+Pink Calculator is a calculator I am building with React. The user can calculate. The user can change the calculator's color. Amazing!
 
 <!-- ![Pink Calc screenshot](./pink-calculator.png "Pink Calculator") -->
 
@@ -18,6 +18,8 @@ Pink Calculator is a calculator I built with React. The user can calculate. The 
 - JavaScript
 - HTML
 - CSS
+- Jest
+- React Testing Library
 
 ## Installation
 
