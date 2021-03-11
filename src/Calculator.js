@@ -4,7 +4,7 @@ const CalcKey = ({ calcKey, onClick }) => {
 	return (
 		<button
 			type="button"
-			className={"calcKey calcKey_" + calcKey}
+			className={`calcKey calcKey_${calcKey}`}
 			onClick={onClick}
 		>
 			{calcKey}
@@ -78,8 +78,8 @@ const Calculator = () => {
 		["color", "0", ".", "="],
 	];
 
-	const calcKeyboard = calcKeys.map((row, idx) => (
-		<div className={"calcRow calcRow_" + idx} key={"calcRow" + idx}>
+	const calcKeyboard = calcKeys.map((row) => (
+		<div className={`calcRow calcRow_${row[0]}`} key={`calcRow${row[0]}`}>
 			<CalcKey calcKey={row[0]} onClick={(e) => handleClick(e)} />
 			<CalcKey calcKey={row[1]} onClick={(e) => handleClick(e)} />
 			<CalcKey calcKey={row[2]} onClick={(e) => handleClick(e)} />
