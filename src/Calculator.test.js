@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import Calculator from "./Calculator";
 
 describe("Calculator", () => {
+	render(<Calculator />);
 	it("renders App component", () => {
-		render(<Calculator />);
-		screen.getAllByRole("button");
-		screen.debug();
+		expect(screen.getAllByRole("button")).toHaveLength(20);
+		expect(screen.getByRole("button", { name: /color/i })).toBeInTheDocument();
 	});
 });
